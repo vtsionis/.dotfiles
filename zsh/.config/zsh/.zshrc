@@ -90,6 +90,7 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt LOCAL_OPTIONS        # Don't permantly change options from inside a function
+setopt PROMPT_SUBST
 
 export HISTFILE=$DATA_DIR/.history
 export HISTSIZE=1000000
