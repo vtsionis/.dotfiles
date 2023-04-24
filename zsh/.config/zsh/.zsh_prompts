@@ -14,24 +14,24 @@ psvar=(
 
 ### PROMPT
 # Create a separate variable per partial prompt
-PROMPT=""
+PROMPT=''
 
 # Indicate that there is an SSH connection and provide information about the
 # connected user and the hostname
-PROMPT+="%0(V.%F{#fdd800}[SSH]%f %F{#5bc0eb}%n%f%F{#fdd800}@%f%F{#d026ff}%m%f .)"
+PROMPT+='%0(V.%F{#fdd800}[SSH]%f %F{#5bc0eb}%n%f%F{#fdd800}@%f%F{#d026ff}%m%f .)'
 
 # Indicate if a nessted shell was started
-PROMPT+="%(2L.%B%F{#fde74c}[ZSH-$SHLVL]%f%b .)"
+PROMPT+='%(2L.%B%F{#fde74c}[ZSH-$SHLVL]%f%b .)'
 
 # Display the (truncated) location of the current directory
-PROMPT+="%F{#5bc0eb}%75<...<%~%<<%f"
+PROMPT+='%F{#5bc0eb}%75<...<%~%<<%f'
 
 # Display GIT information
-PROMPT+=" $GITSTATUS_PROMPT"
+PROMPT+=' $GITSTATUS_PROMPT'
 
 # Finall, display the command prompt
-PROMPT+="
-%F{#d026ff}%(!.#.$)%f "
+PROMPT+='
+%F{#d026ff}%(!.#.$)%f '
 
 ### RPROMPT
 RPROMPT='%0(?..%B%F{#e55934} [Error:%?]%f%b)%1(j.%F{#fde74c} [Jobs:%j]%f.)'
