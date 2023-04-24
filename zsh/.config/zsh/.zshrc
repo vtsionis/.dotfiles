@@ -57,7 +57,7 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
     bindkey "$key[Down]" down-line-or-beginning-search
 fi
 
-# Set some usefule configuration paths
+# Set some useful configuration paths
 CONFIG_DIR=$XDG_CONFIG_HOME/zsh
 DATA_DIR=$XDG_DATA_HOME/zsh
 FUNCTIONS_DIR=$CONFIG_DIR/functions
@@ -89,7 +89,7 @@ setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
-setopt LOCAL_OPTIONS        # Don't permantly change options from inside a function
+setopt LOCAL_OPTIONS        # Don't permanently change options from inside a function
 setopt PROMPT_SUBST
 
 export HISTFILE=$DATA_DIR/.history
@@ -123,6 +123,6 @@ done
 ### Aliases
 [[ -f $CONFIG_DIR/.zsh_aliases ]] && . $CONFIG_DIR/.zsh_aliases
 
-### Propmts
+### Prompts
 [[ -f $CONFIG_DIR/.zsh_prompts ]] && . $CONFIG_DIR/.zsh_prompts
 
