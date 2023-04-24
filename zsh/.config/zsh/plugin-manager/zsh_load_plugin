@@ -1,0 +1,23 @@
+zsh_load_plugin() {
+    git_name=$1
+    sourced_file=$2
+
+    # Split the plugin's repository name to '/' to get its name
+    plugin=$(print $git_name[(ws:/:)2])
+
+    directory=$ZSH_PLUGINS_DIR/$plugin
+    if [[ ! -d $directory ]]; then
+        read "INSTALL?WARNING: Plugin '$plugin' is missing. Do you want to install it? (Y/n) "
+
+        [[ $INSTALL == "n" ]] && print "" && return 0;
+
+        # Download the plugin
+        print "\nINFO: Installing '$plugin'...\n"
+        [[ ! -d $directory ]] && git clone "https://github.com/$git_name.git" $directory
+        print "\nSUCCESS: '$plugin' was isntalled\n"
+    fi
+
+    # Source the plugin
+    [[ -n $sourced_file ]] && source $directory/$sourced_file || source $directory/$plugin.zsh
+}
+
