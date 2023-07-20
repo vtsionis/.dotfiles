@@ -16,6 +16,7 @@ local function map(mode, lhs, rhs, options, use_wk)
     end
 end
 
+--[===[
 -- Exiting INSERT mode
 map("i", "jk", "<Esc>")
 map("i", "kj", "<Esc>")
@@ -101,4 +102,5 @@ end
 
 -- Nvim-tree
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Explorer" }, true)
+--]===]
 

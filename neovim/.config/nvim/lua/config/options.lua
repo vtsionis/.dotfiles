@@ -17,8 +17,8 @@ local goptions = {
   markdown_recommended_style = 0,
 
   -- Disable netrw in favor of a File Explorer plugin
-  loaded_netrw = 1,
-  loaded_netrwPlugin = 1,
+  --loaded_netrw = 1,
+  --loaded_netrwPlugin = 1,
 }
 
 -- Specify Local options

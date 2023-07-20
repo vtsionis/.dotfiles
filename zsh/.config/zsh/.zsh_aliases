@@ -13,8 +13,6 @@ alias ..3="cd ../../../"
 alias ..4="cd ../../../../"
 alias ..5="cd ../../../../../"
 
-alias ~~="cd /home-ssd/vasileios"
-
 # Point xdg-open to an alias
 alias open="xdg-open"
 

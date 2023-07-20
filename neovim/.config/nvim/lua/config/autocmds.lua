@@ -32,6 +32,7 @@ autocmd("TextYankPost", {
     end,
 })
 
+--[[
 -- Close Neovim if the last loaded buffer was deleted
 autocmd("BufDelete", {
     pattern = "*",
@@ -41,6 +42,7 @@ autocmd("BufDelete", {
         end
     end,
 })
+--]]
 
 -- Remove whitespace when saving a file
 autocmd("BufWritePre", {
