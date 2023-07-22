@@ -5,6 +5,9 @@ export EDITOR="nvim"
 # Set up 'exa' colors
 #export LS_COLORS="di=32"
 
+# Prevent GPG from creating .gnupg directory in home
+export GNUPGHOME=$XDG_DATA_HOME/.gnupg
+
 # Set up NVM to use NodeJS
 export NVM_DIR=$XDG_DATA_HOME/nvm
 [[ -s $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh  # This loads nvm
