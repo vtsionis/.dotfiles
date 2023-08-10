@@ -1,22 +1,16 @@
-local function loaded_buffers()
-    local buffers_counter = 0
-    for _, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_is_loaded(buf_hndl) then
-            buffers_counter = buffers_counter + 1
-        end
-    end
-    return buffers_counter
-end
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 local yank_group = augroup("HighLightYank", {})
+local lsp_group = augroup("UserLspConfig", {})
 
 local common_filetypes = {
     "*.c",
+    "*.html",
     "*.js",
+    "*.jsx",
     "*.lua",
+    "*.md",
     "*.py",
     "*.ts",
 }
@@ -31,18 +25,6 @@ autocmd("TextYankPost", {
         })
     end,
 })
-
---[[
--- Close Neovim if the last loaded buffer was deleted
-autocmd("BufDelete", {
-    pattern = "*",
-    callback = function()
-        if loaded_buffers() == 1 then
-            vim.cmd("q")
-        end
-    end,
-})
---]]
 
 -- Remove whitespace when saving a file
 autocmd("BufWritePre", {
@@ -64,6 +46,17 @@ autocmd("BufWritePre", {
         if vim.fn.getline(last_line_number) ~= "" then
             vim.fn.append(last_line_number, "")
         end
+    end,
+})
+
+-- Use LspAttach autocommand to only map the following keys after the language
+-- server attaches to the current buffer
+autocmd("LspAttach", {
+    group = lsp_group,
+    callback = function(e)
+        local opts = { buffer = e.buf }
+
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     end,
 })
 
