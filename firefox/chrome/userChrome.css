@@ -1,0 +1,23 @@
+toolbarseparator {
+  color: #50FA7B;
+}
+
+panel toolbarseparator {
+  color: #FF79C6;
+  border-bottom: 1px solid !important;
+}
+
+#PlacesToolbarItems > toolbarseparator::before {
+  border-inline-start: 2px solid !important;
+  margin: 0 !important;
+}
+
+menuseparator {
+  color: #FF79C6;
+}
+
+menuseparator::before {
+  border-bottom: 2px solid !important;
+  margin: 0 !important;
+}
+
