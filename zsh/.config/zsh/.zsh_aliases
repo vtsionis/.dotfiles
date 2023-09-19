@@ -2,8 +2,8 @@
 alias src="source $XDG_CONFIG_HOME/zsh/.zshrc && echo '.zshrc file sourced\n'"
 
 # Replace ls with exa
-alias ls="exa --icons --group-directories-first"
-alias la="exa --icons --all -l --group-directories-first"
+alias ls="eza --icons --group-directories-first"
+alias la="eza --icons --all -l --group-directories-first"
 alias tree="ls --all --tree"
 
 # Navigation
