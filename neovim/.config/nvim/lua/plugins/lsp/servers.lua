@@ -1,4 +1,6 @@
 local M = {
+    clangd = {},
+
     lua_ls = {
         settings = {
             Lua = {
@@ -16,7 +18,11 @@ local M = {
                 },
             },
         },
-    }
+    },
+
+    tsserver = {},
+
+    vala_ls = {},
 }
 
 return M

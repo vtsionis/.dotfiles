@@ -6,6 +6,7 @@ local lsp_group = augroup("UserLspConfig", {})
 
 local common_filetypes = {
     "*.c",
+    "*.css",
     "*.html",
     "*.js",
     "*.jsx",
@@ -13,6 +14,7 @@ local common_filetypes = {
     "*.md",
     "*.py",
     "*.ts",
+    "*.vala",
 }
 
 -- Highlight yanked text

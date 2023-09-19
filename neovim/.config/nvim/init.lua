@@ -6,6 +6,10 @@ vim.api.nvim_create_autocmd("User", {
     callback = function()
         require("config.keymaps")
         require("config.autocmds")
+
+        -- Load custom highlights after the color scheme is set so it will not
+        -- overwrite them
+        require("config.highlights")
     end,
 })
 

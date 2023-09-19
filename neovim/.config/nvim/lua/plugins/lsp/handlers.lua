@@ -20,7 +20,7 @@ function M.setup()
         { name = "DiagnosticSignError", text = "⊗" },
         { name = "DiagnosticSignWarn", text = "⚠" },
         { name = "DiagnosticSignInfo", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignHint", text = "" },
         { name = "DiagnosticSignOk", text = "󰗡" },
     }
 

@@ -9,6 +9,7 @@ return {
         -- Place here any plugins that depend on treesitter
         "HiPhish/nvim-ts-rainbow2",
         "windwp/nvim-ts-autotag",
+        "JoosepAlviste/nvim-ts-context-commentstring",
         "nvim-treesitter/playground",
     },
     cmd = {
@@ -64,6 +65,29 @@ return {
         },
         autotag = {
             enable = true,
+            filetypes = {
+                "html",
+                "javascript",
+                "typescript",
+                "javascriptreact",
+                "typescriptreact",
+                "svelte",
+                "vue",
+                "tsx",
+                "jsx",
+                "rescript",
+                "xml",
+                "php",
+                -- "markdown",
+                "astro",
+                "glimmer",
+                "handlebars",
+                "hbs"
+            },
+        },
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
         },
         playground = {
             enable = true,
