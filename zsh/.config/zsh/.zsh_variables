@@ -28,6 +28,9 @@ PATH=$CARGO_HOME/bin:$PATH
 
 # Use bat as the manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Below is needed as a hacky workaround for fixing a known bug, see
+# https://forum.garudalinux.org/t/manpage-displays-garbled-characters/29658/3
+export MANROFFOPT="-c"
 
 # Finally, export the PATH
 export PATH
