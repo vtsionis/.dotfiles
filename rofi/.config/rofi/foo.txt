@@ -1,0 +1,13 @@
+-no-lazy-grab
+-no-plugins
+-plugin-path
+-markup
+-normal-window
+-selected-row
+
+fallback-icon:
+window {
+    close-on-delete: false;
+    hide-active-window: true;
+}
+

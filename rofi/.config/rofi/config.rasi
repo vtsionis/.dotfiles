@@ -1,0 +1,113 @@
+configuration {
+    modes: [
+        "combi",
+        "drun",
+        "window"
+    /*  "windowcd" */
+    /*  "run"   */
+    /*  "ssh"   */
+    /*  "keys"  */
+    /*  "filebrowser" */
+    ];
+
+    threads: 0;
+    case-sensitive: false;
+    cycle: true;
+    filter: "";
+    cache-directory: "/home/vasileios/.local/state/rofi/";
+    scroll-method: 1;
+    normalize-match: true;
+    show-icons: true;
+    icon-theme: "";
+    steal-focus: true;
+    refilter-timeout-limit: 8192;
+
+    /* --- Matching --- */
+    matching: "normal";
+    tokenize: true;
+
+    drun-categories: "";
+    drun-match-fields: "all";
+    drun-display-format: "{name}";
+    drun-show-actions: false;
+
+    window-match-fields: "all";
+    matching-negate-char: '-';
+
+    /* --- Theming --- */
+    location: 0;
+    fixed-num-lines: true;
+    sidebar-mode: true;
+    hover-select: false;
+    eh: 1;
+    auto-select: false;
+    monitor: -5;
+    dpi: 0;
+
+    /* --- Pattern setting --- */
+    terminal: "kitty";
+    ssh-client: "ssh";
+
+    /* --- SSH settings --- */
+    ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+    parse-hosts: true;
+    parse-known-hosts: true;
+
+    /* --- Run settings --- */
+    run-command: "{cmd}";
+    run-shell-command: "{terminal} -e {cmd}";
+    run-list-command: "";
+
+    /* --- Window switcher settings --- */
+    window-format: "{w} | {c} | {t:50}";
+    window-command: "wmctrl -i -R {window}";
+    window-thumbnail: false;
+
+    /* --- Combi settings --- */
+    combi-modes: [
+        "window",
+        "drun"
+    ];
+    combi-display-format: "{mode} {text}";
+    combi-hide-mode-prefix: true;
+
+    /* --- History and Sorting --- */
+    disable-history: false;
+    sort: true;
+    sorting-method: "fzf";
+    max-history-size: 10;
+
+    /* --- Filebrowser --- */
+    filebrowser {
+        sorting-method: "name";
+        directories-first: true;
+    }
+
+    /* --- Other --- */
+    drun-use-desktop-cache: true;
+    drun-reload-desktop-cache: true;
+    drun-url-launcher: "xdg-open";
+    pid: "/run/user/1000/rofi.pid";
+    replace: true;
+
+    combi {
+        display-name: "combo";
+    }
+
+    click-to-exit: true;
+    xserver-i300-workaround: false;
+
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
+}
+
+/* Insert theme */
+/* @theme "gruvbox-light" */
+
+/* Insert theme modifications after this */
+entry {
+    placeholder: "What are you searching for?";
+}
+
