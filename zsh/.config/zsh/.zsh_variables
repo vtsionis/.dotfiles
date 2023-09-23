@@ -15,6 +15,7 @@ export NVM_DIR=$XDG_DATA_HOME/nvm
 
 # Set up NPM and NodeJS
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/.npmrc
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node/.node_repl_history
 
 # Execute the Python commands in the file specified below before the first
