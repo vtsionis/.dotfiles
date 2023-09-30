@@ -66,8 +66,6 @@ return {
     event = "VeryLazy",
     config = function()
         require("lualine").setup(config)
-
-        vim.opt.cmdheight = 0
     end,
 }
 
