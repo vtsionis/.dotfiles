@@ -1,7 +1,7 @@
 local M = {
     clangd = {},
 
-    html = {},
+    emmet_language_server = {},
 
     lua_ls = {
         settings = {
