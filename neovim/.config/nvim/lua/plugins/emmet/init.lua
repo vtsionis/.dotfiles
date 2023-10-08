@@ -4,21 +4,17 @@
 
 return {
     "mattn/emmet-vim",
-    event = "VeryLazy",
+    ft = {
+        "html",
+        "css",
+    },
     init = function()
         vim.g.user_emmet_leader_key = ","
-        vim.g.user_emmet_install_global = false
         vim.g.user_emmet_mode = "i"
 
-    end,
-    config = function()
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = {
-                "html",
-                "css",
-            },
-            command = vim.cmd([[EmmetInstall]]),
-        })
+        local snippets_file = vim.fn.stdpath "config" .. "/lua/plugins/emmet/snippets.json"
+        local snippets = table.concat(vim.fn.readfile(snippets_file), "\n")
+        vim.g.user_emmet_settings = vim.json.decode(snippets)
     end,
 }
 
