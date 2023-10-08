@@ -1,23 +1,21 @@
-local filetypes = {
-    "html",
-    "css",
-    "less",
-    "sass",
-    "scss",
-}
-
-local event = {}
-for _, filetype in pairs(filetypes) do
-    table.insert(event, "BufEnter *." .. filetype)
-end
-
 return {
-    "norcalli/nvim-colorizer.lua",
-    event = event,
+    -- "norcalli/nvim-colorizer.lua", forked from
+    "NvChad/nvim-colorizer.lua",
+    ft = {
+        "html",
+        "css",
+        "less",
+        "sass",
+        "scss",
+    },
     config = function()
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = filetypes,
-            command = vim.cmd([[ColorizerAttachToBuffer]]),
+        require("colorizer").setup({
+            user_default_options = {
+                RRGGBBAA = true,
+                AARRGGBB = true,
+                css = true,
+                mode = "virtualtext",
+            }
         })
     end,
 }
