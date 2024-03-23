@@ -14,6 +14,7 @@ local common_filetypes = {
     "*.py",
     "*.ts",
     "*.vala",
+    "*.zsh*",
 }
 
 local highlight_group = augroup("HighLightGroup", { clear = true })
@@ -23,7 +24,6 @@ local formatting_group = augroup("FormattingGroup", { clear = true })
 autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = highlight_group,
-    group = augroup("highlight-yank", { clear = true }),
     callback = function()
         vim.highlight.on_yank({
             timeout = 130,
