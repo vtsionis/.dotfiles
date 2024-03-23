@@ -1,5 +1,3 @@
-### Configure all prompts for ZSH
-
 # Print an empty line before the Prompt but not when this is the first Prompt
 precmd() {
     precmd() {
@@ -27,7 +25,7 @@ PROMPT+='%(2L.%B%F{#fde74c}[ZSH-$SHLVL]%f%b .)'
 PROMPT+='%F{#5bc0eb}%75<...<%~%<<%f'
 
 # Display GIT information
-PROMPT+=' $GITSTATUS_PROMPT'
+PROMPT+=' $(gitstatus -i)' # gitstatus is provided by "xylous/gitstatus" plugin
 
 # Finall, display the command prompt
 PROMPT+='

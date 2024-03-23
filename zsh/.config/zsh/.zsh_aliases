@@ -1,9 +1,8 @@
-### Configure here all aliases to be used in a ZSH session
-alias src="source $XDG_CONFIG_HOME/zsh/.zshrc && echo '.zshrc file sourced\n'"
+alias reload=". $ZDOTDIR/.zshrc && print 'Zsh configuration file reloaded\n'"
 
 # Replace ls with exa
 alias ls="eza --icons --group-directories-first"
-alias la="eza --icons --all -l --group-directories-first"
+alias la="ls --all -l"
 alias tree="ls --all --tree"
 
 # Navigation

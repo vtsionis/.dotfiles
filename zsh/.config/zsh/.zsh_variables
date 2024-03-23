@@ -1,17 +1,25 @@
-### All environment variables will be set in this file
-
 export EDITOR="nvim"
 
-# Set up 'exa' colors
-#export LS_COLORS="di=32"
+export LESSHISTORYFILE=$XDG_STATE_HOME/less/history
+
+# Set up wget
+WGET_HOME=$XDG_CONFIG_HOME/wget
+WGET_DATA=$XDG_DATA_HOME/wget
+mkdir -p $WGET_HOME $WGET_DATA
+
+export WGETRC=$WGET_HOME/.wgetrc
+if [[ ! -f $WGETRC ]]; then
+    # Since .wgetrc doesn't understand environment variables, we need to create
+    # the file in a hacky way
+    print "hsts-file=$WGET_DATA/.wget-hsts" > $WGETRC
+fi
 
 # Prevent GPG from creating .gnupg directory in home
 export GNUPGHOME=$XDG_DATA_HOME/.gnupg
 
-# Set up NVM to use NodeJS
-export NVM_DIR=$XDG_DATA_HOME/nvm
-[[ -s $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh  # This loads nvm
-[[ -s $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion  # This loads nvm bash_completion
+# Set up Volta as the NodeJS version manager
+export VOLTA_HOME=$XDG_DATA_HOME/.volta
+PATH=$VOLTA_HOME/bin:$PATH
 
 # Set up NPM and NodeJS
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/.npmrc
@@ -21,11 +29,6 @@ export NODE_REPL_HISTORY=$XDG_DATA_HOME/node/.node_repl_history
 # Execute the Python commands in the file specified below before the first
 # prompt is displayed in interactive mode
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonstartup.py
-
-# Set the location of Rustup and Cargo
-export RUSTUP_HOME=$XDG_DATA_HOME/rustup
-export CARGO_HOME=$XDG_DATA_HOME/cargo
-PATH=$CARGO_HOME/bin:$PATH
 
 # Use bat as the manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
