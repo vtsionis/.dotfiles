@@ -1,12 +1,13 @@
+[user]
+    name = Vasileios Tsionis
+    email = vtsionis@protonmail.com
 [pager]
 	branch = false
-[user]
-	name = Vasileios Tsionis
-	email = vtsionis@protonmail.com
 [init]
 	defaultBranch = master
 [core]
 	excludesfile = ~/.config/git/.gitignore_global
-
 [push]
 	autoSetupRemote = true
+[pull]
+    rebase = false
