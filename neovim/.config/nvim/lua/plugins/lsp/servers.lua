@@ -1,8 +1,6 @@
 local M = {
     clangd = {},
 
-    emmet_language_server = {},
-
     lua_ls = {
         settings = {
             Lua = {
@@ -23,8 +21,6 @@ local M = {
     },
 
     tsserver = {},
-
-    vala_ls = {},
 }
 
 return M

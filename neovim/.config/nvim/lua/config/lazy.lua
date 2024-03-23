@@ -1,5 +1,6 @@
--- Install lazy.nvim
-local lazyroot = vim.fn.stdpath "data" .. "/lazy"
+-- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim
+
+local lazyroot = vim.fn.stdpath("data") .. "/lazy"
 local lazypath = lazyroot .. "/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -8,8 +9,8 @@ if not vim.loop.fs_stat(lazypath) then
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-	lazypath,
+        "--branch=stable",
+        lazypath,
     })
 end
 
@@ -27,11 +28,12 @@ require("lazy").setup("plugins", {
         colorscheme = { "catppuccin", "habamax" },
     },
     ui = {
-        border = "rounded",
         size = {
             width = 0.85,
             height = 0.85,
         },
+        wrap = true,
+        border = "rounded",
         icons = {
             cmd = " ",
             config = "",
@@ -65,7 +67,7 @@ require("lazy").setup("plugins", {
                 "gzip",
                 "matchit",
                 "matchparen",
-                --"netrwPlugin",
+                -- "netrwPlugin",
                 "tarPlugin",
                 "tohtml",
                 "tutor",

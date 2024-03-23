@@ -1,5 +1,5 @@
 return {
-    -- "norcalli/nvim-colorizer.lua", forked from
+    -- for of "norcalli/nvim-colorizer.lua"
     "NvChad/nvim-colorizer.lua",
     ft = {
         "html",

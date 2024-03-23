@@ -12,7 +12,6 @@ local function mason_to_lspconfig_server_name(mapping, name)
             return lspconfig_name
         end
     end
-    return nil
 end
 
 local events_list = {
@@ -40,10 +39,9 @@ return {
             end, {})
 
             require("mason").setup({
-                -- Change this to .DEBUG when debugging issues with package
-                -- installations
-                log_level = vim.log.levels.DEBUG,
-
+               install_root_dir = vim.fn.stdpath("data") .. "/mason",
+                PATH = "prepend",
+                log_level = vim.log.levels.INFO,
                 max_concurrent_installers = 10,
 
                 ui = {
@@ -60,17 +58,15 @@ return {
                     keymaps = {
                         -- Expand a package
                         toggle_package_expand = "<CR>",
-                        -- Install the package under the current cursor position
+                        -- Install the package under the cursor
                         install_package = "i",
-                        -- Reinstall/update the package under the current cursor
-                        -- position
+                        -- Reinstall/update the package under the cursor
                         update_package = "u",
-                        -- Check for new version for the package under the
-                        -- current cursor position
+                        -- Check for new version for the package under cursor
                         check_package_version = "c",
                         -- Update all installed packages
                         update_all_packages = "U",
-                        -- Check which installed packages are outdated
+                        -- Check outdated installed packages
                         check_outdated_packages = "C",
                         -- Uninstall a package
                         uninstall_package = "X",
@@ -78,6 +74,10 @@ return {
                         cancel_installation = "<C-c>",
                         -- Apply language filter
                         apply_language_filter = "<C-f>",
+                        -- Toggle viewing package installation log
+                        toggle_package_install_log = "<CR>",
+                        -- Toggle the help menu
+                        toggle_help = "g?",
                     },
                 },
             })
@@ -113,17 +113,17 @@ return {
             -- can be attached to any open buffers, if applicable, without the
             -- need to restart Neovim
             registry:on(
-                -- https://github.com/williamboman/mason.nvim/blob/main/doc/reference.md#registry-events
-                "package:install:success",
-                vim.schedule_wrap(function(pkg)
-                    -- pkg.name is the server name according to Mason
-                    -- i.e. "lua-language-server" so we need to map it to its
-                    -- corresponding lspconfig server name i.e. "lua_ls"
-                    local server_name = mason_to_lspconfig_server_name(mapping.lspconfig_to_package, pkg.name)
-                    if server_name then
-                        lspconfig[server_name].setup(servers[server_name] or {})
-                    end
-                end)
+              -- https://github.com/williamboman/mason.nvim/blob/main/doc/reference.md#registry-events
+              "package:install:success",
+              vim.schedule_wrap(function(pkg)
+                  -- pkg.name is the server name according to Mason
+                  -- i.e. "lua-language-server" so we need to map it to its
+                  -- corresponding lspconfig server name i.e. "lua_ls"
+                  local server_name = mason_to_lspconfig_server_name(mapping.lspconfig_to_package, pkg.name)
+                  if server_name then
+                      lspconfig[server_name].setup(servers[server_name] or {})
+                  end
+              end)
             )
         end,
     },

@@ -1,17 +1,23 @@
 return {
     {
         "catppuccin/nvim",
-        lazy = false,
         name = "catppuccin",
         priority = 1000,
+        lazy = false,
         config = function()
             vim.cmd.colorscheme("catppuccin")
         end,
     },
     {
         "ellisonleao/gruvbox.nvim",
-        lazy = false,
         priority = 1000,
+        lazy = false,
+        config = true,
+    },
+    {
+        "Mofiqul/dracula.nvim",
+        priority = 1000,
+        lazy = false,
         config = true,
     },
     {

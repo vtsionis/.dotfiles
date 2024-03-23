@@ -1,8 +1,7 @@
+-- See `:help lua-guide-autocommands`
+
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-
-local yank_group = augroup("HighLightYank", {})
-local lsp_group = augroup("UserLspConfig", {})
 
 local common_filetypes = {
     "*.c",
@@ -17,19 +16,24 @@ local common_filetypes = {
     "*.vala",
 }
 
+local highlight_group = augroup("HighLightGroup", { clear = true })
+local formatting_group = augroup("FormattingGroup", { clear = true })
+
 -- Highlight yanked text
 autocmd("TextYankPost", {
-    group = yank_group,
-    pattern = "*",
+    desc = "Highlight when yanking (copying) text",
+    group = highlight_group,
+    group = augroup("highlight-yank", { clear = true }),
     callback = function()
         vim.highlight.on_yank({
-            timeout = 120,
+            timeout = 130,
         })
     end,
 })
 
 -- Remove whitespace when saving a file
 autocmd("BufWritePre", {
+    group = formatting_group,
     pattern = common_filetypes,
     callback = function()
         -- Without moving the cursor
@@ -41,6 +45,7 @@ autocmd("BufWritePre", {
 
 -- Add an empty new line at the end of a file, if one doesn't already exist
 autocmd("BufWritePre", {
+    group = formatting_group,
     pattern = common_filetypes,
     callback = function()
         local last_line_number = vim.fn.line("$")
@@ -48,17 +53,6 @@ autocmd("BufWritePre", {
         if vim.fn.getline(last_line_number) ~= "" then
             vim.fn.append(last_line_number, "")
         end
-    end,
-})
-
--- Use LspAttach autocommand to only map the following keys after the language
--- server attaches to the current buffer
-autocmd("LspAttach", {
-    group = lsp_group,
-    callback = function(e)
-        local opts = { buffer = e.buf }
-
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     end,
 })
 

@@ -1,3 +1,6 @@
+-- See `:help vim.opt`
+-- For more options, you can see `:help option-list`
+
 local opt = vim.opt
 
 -- Specify Global options
@@ -19,13 +22,17 @@ local goptions = {
   -- Disable netrw in favor of a File Explorer plugin
   --loaded_netrw = 1,
   --loaded_netrwPlugin = 1,
+
+  -- Skip backwards compatibility routines and speed up loading for Treesitter's
+  -- "JoosepAlviste/nvim-ts-context-commentstring" plugin
+  skip_ts_context_commentstring_module = true,
 }
 
 -- Specify Local options
 local options = {
   breakindent = true,
   cdhome = true,
-  clipboard = "unnamedplus", -- Sync with system clipboard
+  clipboard = "unnamedplus",
   cmdwinheight = 10,
   colorcolumn = "80",
   completeopt = "menu,menuone,preview,noselect",
@@ -35,15 +42,19 @@ local options = {
   cursorline = true,
   expandtab = true,
   formatoptions = "jcroqlnt",
+  hlsearch = true,
+  inccommand = "split",
+  ignorecase = false,
   keymodel = "startsel",
   laststatus = 3,
   linebreak = true,
   list = false,
   listchars = {
       eol = "⤶",
-      tab = "  󰌒",
-      space = "␣",
       lead = "␣",
+      nbsp = "␣",
+      space = "␣",
+      tab = "  󰌒",
       trail = "␣",
   },
   mouse = "a",
@@ -63,6 +74,7 @@ local options = {
   showtabline = 2, -- Maybe diasble this when a window manager plugin is installed
   sidescrolloff = 8,
   signcolumn = "yes",
+  smartcase = true,
   smartindent = true,
   softtabstop = 4,
   spell = true,
@@ -81,6 +93,7 @@ local options = {
   titlestring = "%F %r %m",
   undofile = true,
   undolevels = 10000,
+  updatetime = 250,
   visualbell = true,
   wildmode = "longest:full,full",
   winminwidth = 5,

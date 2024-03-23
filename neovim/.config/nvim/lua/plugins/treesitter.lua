@@ -6,7 +6,7 @@ return {
         "BufNewFile",
     },
     dependencies = {
-        -- Place here any plugins that depend on treesitter
+        -- Place here any plugins that depend on Treesitter
         "HiPhish/nvim-ts-rainbow2",
         "windwp/nvim-ts-autotag",
         "JoosepAlviste/nvim-ts-context-commentstring",
@@ -49,11 +49,11 @@ return {
             "yaml",
             "zig",
         },
-        sync_installed = false,
+        sync_install = false,
         auto_install = true,
 
-        -- Setup of treesitter native modules
-        -- see :h nvim-treesitter-modules
+        -- Setup of Treesitter native modules
+        -- see `:h nvim-treesitter-modules`
         -- Available plugins
         highlight = {
             enable = true,
@@ -78,14 +78,13 @@ return {
                 "rescript",
                 "xml",
                 "php",
-                -- "markdown",
                 "astro",
                 "glimmer",
                 "handlebars",
-                "hbs"
+                "hbs",
             },
         },
-        context_commentstring = {
+        ts_context_commentstring = {
             enable = true,
             enable_autocmd = false,
         },
@@ -94,7 +93,7 @@ return {
         },
     },
     config = function(_, opts)
-        -- Tree-sitter based folding
+        -- Treesitter based folding
         vim.opt.foldmethod = "expr"
         vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
         vim.opt.foldenable = false
