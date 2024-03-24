@@ -15,4 +15,5 @@ vim.api.nvim_create_autocmd("User", {
 
 -- TODO:
 -- 1. Port "SynthWave '84" theme from VSCode to Neovim
+-- 2. Clear messages appearing below the status line after a certain period
 
