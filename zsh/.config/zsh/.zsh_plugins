@@ -1,0 +1,16 @@
+# Bootstrap Zman as the plugin manager
+export ZMAN_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zman/zman.zsh"
+
+if [[ ! -f $ZMAN_DIR/zman.zsh ]]; then
+    # Clone Zman's repository
+    git clone https://github.com/vtsionis/zman.git $ZMAN_DIR
+fi
+
+source $ZMAN_DIR/zman.zsh
+
+# Load the following plugins
+zman load zsh-users/zsh-autosuggestions
+zman load zdharma-continuum/fast-syntax-highlighting
+zman load xylous/gitstatus
+zman load Freed-Wu/zsh-help
+
