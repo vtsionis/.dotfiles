@@ -1,3 +1,16 @@
+# Note that the ZDOTDIR environment variable should already be set by sourcing
+# the $HOME/.zshenv file in the initial set up of Zsh
+
+# Explicitly set the XDG environment variables
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+for xdg_path in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_STATE_HOME; do
+    mkdir -p $xdg_path
+done
+
 # Specify location of zcompdump file
 autoload -Uz compinit
 compinit -d $XDG_CACHE_HOME/.zcompdump
@@ -57,18 +70,14 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
     bindkey "$key[Down]" down-line-or-beginning-search
 fi
 
-# Set some useful configuration paths
-CONFIG_DIR=$XDG_CONFIG_HOME/zsh
-DATA_DIR=$XDG_DATA_HOME/zsh
-FUNCTIONS_DIR=$CONFIG_DIR/functions
-PLUGIN_MANAGER=$CONFIG_DIR/plugin-manager
-export ZSH_PLUGINS_DIR=$DATA_DIR/plugins
+# Set the HISTORY_DIR and make sure that it exists since Zsh will not be able
+# to create the history file if not all intermediate directories exist
+HISTORY_DIR=$XDG_DATA_HOME/zsh
+mkdir -p $HISTORY_DIR
 
-# Make sure that the DATA_DIR exists as this is expected by the history file
-mkdir -p $DATA_DIR
-
-# Expand the fpath
-fpath=($PLUGIN_MANAGER $FUNCTIONS_DIR $fpath)
+export HISTFILE=$HISTORY_DIR/.history
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
 
 ### Options
 # TBD:
@@ -89,40 +98,34 @@ setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
-setopt LOCAL_OPTIONS        # Don't permanently change options from inside a function
+setopt LOCAL_OPTIONS # Don't permanently change options from inside a function
 setopt PROMPT_SUBST
 
-export HISTFILE=$DATA_DIR/.history
-export HISTSIZE=1000000
-export SAVEHIST=$HISTSIZE
-
 ### Environment variables
-# NOTE: The PATH is extended and exported from this file
-[[ -f $CONFIG_DIR/.zsh_variables ]] && . $CONFIG_DIR/.zsh_variables
-
-### Custom functions
-[[ -d $FUNCTIONS_DIR ]] && [[ "$(/usr/bin/ls -A $FUNCTIONS_DIR)" ]] && autoload -Uz $FUNCTIONS_DIR/**/*(.)
+if [[ -f $ZDOTDIR/.zsh_variables ]]; then
+    source $ZDOTDIR/.zsh_variables
+fi
 
 ### Plugins
-typeset -A plugins
+if [[ -f $ZDOTDIR/.zsh_plugins ]]; then
+    # Initialize the plugin manager and any installed plugins
+    source $ZDOTDIR/.zsh_plugins
+fi
 
-# Specify the plugins as a key:value pair in a hash with the key being the name
-# of the Git repository and the value being the file that needs to be sourced
-plugins=(
-    "zsh-users/zsh-autosuggestions" ""
-    "zsh-users/zsh-syntax-highlighting" ""
-    "romkatv/gitstatus" "gitstatus.prompt.zsh"
-)
-
-[[ -d $PLUGIN_MANAGER ]] && autoload -Uz $PLUGIN_MANAGER/**/*(.) && plugin_manager_loaded=true
-
-[[ $plugin_manager_loaded ]] && for plugin plugin_file in "${(@kv)plugins}"; do
-    zsh_load_plugin $plugin $plugin_file
+### Custom functions
+for fn in $ZDOTDIR/functions/**/*(N); do
+    # Note that custom functions are expected to be stored as single files in
+    # the root functions directory
+    [[ -f $fn ]] && autoload -Uz $fn
 done
 
-### Aliases
-[[ -f $CONFIG_DIR/.zsh_aliases ]] && . $CONFIG_DIR/.zsh_aliases
-
 ### Prompts
-[[ -f $CONFIG_DIR/.zsh_prompts ]] && . $CONFIG_DIR/.zsh_prompts
+if [[ -f $ZDOTDIR/.zsh_prompts ]]; then
+    source $ZDOTDIR/.zsh_prompts
+fi
+
+### Aliases
+if [[ -f $ZDOTDIR/.zsh_aliases ]]; then
+    source $ZDOTDIR/.zsh_aliases
+fi
 
