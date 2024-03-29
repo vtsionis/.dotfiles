@@ -17,9 +17,15 @@ fi
 # Prevent GPG from creating .gnupg directory in home
 export GNUPGHOME=$XDG_DATA_HOME/.gnupg
 
-# Set up Volta as the NodeJS version manager
-export VOLTA_HOME=$XDG_DATA_HOME/.volta
-PATH=$VOLTA_HOME/bin:$PATH
+# Set up N as the NodeJS version manager
+export N_PREFIX=$XDG_DATA_HOME/n
+if [[ ! -d $N_PREFIX ]]; then
+    # Bootstrap N and install the latest version of Node
+    print "[ N ] Installing N as the NodeJS version manager in \"$N_PREFIX\""
+    curl -s -L https://bit.ly/n-install | bash -s -- -n -y -q latest
+    print "[ N ] Installation completed with Node version $($N_PREFIX/bin/node --version)"
+fi
+PATH=$N_PREFIX/bin:$PATH
 
 # Set up NPM and NodeJS
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/.npmrc
