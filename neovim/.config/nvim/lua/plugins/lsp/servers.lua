@@ -1,4 +1,5 @@
 local M = {
+    -- LSPs
     clangd = {},
 
     lua_ls = {
@@ -21,6 +22,9 @@ local M = {
     },
 
     tsserver = {},
+
+    -- Linters
+    eslint = {},
 }
 
 return M
