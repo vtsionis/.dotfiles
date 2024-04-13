@@ -11,10 +11,6 @@ for xdg_path in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_STATE_HOME;
     mkdir -p $xdg_path
 done
 
-# Specify location of zcompdump file
-autoload -Uz compinit
-compinit -d $XDG_CACHE_HOME/.zcompdump
-
 # Use Vi editing mode
 bindkey -v
 
@@ -128,4 +124,10 @@ fi
 if [[ -f $ZDOTDIR/.zsh_aliases ]]; then
     source $ZDOTDIR/.zsh_aliases
 fi
+
+# Load completions after the Zsh plugins are installed so any completion that
+# they provide can be loaded as well
+autoload -Uz compinit
+mkdir -p $XDG_CACHE_HOME/zsh
+compinit -d $XDG_CACHE_HOME/zsh/.zcompdump
 
