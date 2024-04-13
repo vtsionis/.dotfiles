@@ -9,6 +9,7 @@ fi
 source $ZMAN_DIR/zman.zsh
 
 # Load the following plugins
+zman load zsh-users/zsh-completions
 zman load zsh-users/zsh-autosuggestions
 zman load zdharma-continuum/fast-syntax-highlighting
 zman load xylous/gitstatus
