@@ -3,7 +3,7 @@ local options = {
     expandtab = true,
     shiftwidth = 4,
     softtabstop = 4,
-    tabstop = 8,
+    tabstop = 4,
 }
 
 -- NOTE: set local options in ftplugin files
