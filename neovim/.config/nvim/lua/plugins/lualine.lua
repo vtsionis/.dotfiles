@@ -61,6 +61,14 @@ config.sections = {
     },
 }
 
+config.winbar = {
+    lualine_c = { "filename" },
+}
+
+config.inactive_winbar = {
+    lualine_c = { "filename" },
+}
+
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
