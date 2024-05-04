@@ -9,6 +9,16 @@ local goptions = {
   mapleader = " ",
   maplocalleader = " ",
 
+  -- Disable builtin plugins
+  loaded_2html_plugin = 1,
+  loaded_gzip = 1,
+  loaded_matchit = 1,
+  loaded_matchparen = 1,
+  loaded_netrwPlugin = 1,
+  loaded_tarPlugin = 1,
+  loaded_tutor_mode_plugin = 1,
+  loaded_zipPlugin = 1,
+
   -- Disable all providers for remote plugins
   -- see :help remote-plugin
   loaded_python3_provider = 0,
@@ -18,10 +28,6 @@ local goptions = {
 
   -- Fix markdown indentation settings
   markdown_recommended_style = 0,
-
-  -- Disable netrw in favor of a File Explorer plugin
-  --loaded_netrw = 1,
-  --loaded_netrwPlugin = 1,
 
   -- Skip backwards compatibility routines and speed up loading for Treesitter's
   -- "JoosepAlviste/nvim-ts-context-commentstring" plugin
@@ -33,6 +39,7 @@ local options = {
   breakindent = true,
   cdhome = true,
   clipboard = "unnamedplus",
+  cmdheight = 0,
   cmdwinheight = 10,
   colorcolumn = "80",
   completeopt = "menu,menuone,preview,noselect",
@@ -41,10 +48,29 @@ local options = {
   cpoptions = opt.cpoptions._value .. "n",
   cursorline = true,
   expandtab = true,
+  fillchars = {
+      eob = ' ',
+      fold = " ",
+      foldopen = "⌄",
+      foldclose = "󰥭",
+      foldsep = " ",
+      horiz = '━',
+      horizup = '┻',
+      horizdown = '┳',
+      vert = '┃',
+      vertleft = '┫',
+      vertright = '┣',
+      verthoriz = '╋',
+  },
+  foldcolumn = "1",
+  foldenable = true,
+  foldlevel = 99,
+  foldlevelstart = 99,
   formatoptions = "jcroqlnt",
   hlsearch = true,
   inccommand = "split",
   ignorecase = false,
+  jumpoptions = { "stack" },
   keymodel = "startsel",
   laststatus = 3,
   linebreak = true,
@@ -60,7 +86,9 @@ local options = {
   mouse = "a",
   mousemoveevent = true,
   number = true,
+  numberwidth = 3,
   path = ".,/usr/include/,,,*,**",
+  pumblend = 0,
   pumheight = 15,
   relativenumber = true,
   report = 0,
@@ -70,8 +98,9 @@ local options = {
   shiftround = true,
   shiftwidth = 4,
   shortmess = opt.shortmess._value .. "mrsWIcC",
+  showcmd = false,
   showmode = false,
-  showtabline = 2, -- Maybe diasble this when a window manager plugin is installed
+  showtabline = 0,
   sidescrolloff = 8,
   signcolumn = "yes",
   smartcase = true,
@@ -95,8 +124,13 @@ local options = {
   undolevels = 10000,
   updatetime = 250,
   visualbell = true,
+  wildignore = {
+      "**/.git/*",
+      "**/node_modules/*",
+  },
   wildmode = "longest:full,full",
   winminwidth = 5,
+  wrap = true,
 }
 
 -- Finally, set all above options via a for loop
