@@ -14,6 +14,12 @@ local function mason_to_lspconfig_server_name(mapping, name)
     end
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
+
 local events_list = {
     "BufEnter",
     "BufReadPre",
@@ -102,7 +108,10 @@ return {
             handlers.setup()
 
             for _, server_name in ipairs(ensure_installed) do
-                lspconfig[server_name].setup(servers[server_name])
+                local settings = servers[server_name]
+                settings.capabilities = capabilities
+
+                lspconfig[server_name].setup(settings)
             end
 
             local registry = require("mason-registry")
