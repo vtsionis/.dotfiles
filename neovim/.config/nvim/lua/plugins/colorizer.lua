@@ -1,5 +1,5 @@
 return {
-    -- for of "norcalli/nvim-colorizer.lua"
+    -- fork of "norcalli/nvim-colorizer.lua"
     "NvChad/nvim-colorizer.lua",
     ft = {
         "html",
@@ -7,6 +7,7 @@ return {
         "less",
         "sass",
         "scss",
+        "svelte",
     },
     config = function()
         require("colorizer").setup({
