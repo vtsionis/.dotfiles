@@ -108,17 +108,17 @@ if [[ -f $ZDOTDIR/.zsh_plugins ]]; then
     source $ZDOTDIR/.zsh_plugins
 fi
 
-### Custom functions
-for fn in $ZDOTDIR/functions/**/*(N); do
-    # Note that custom functions are expected to be stored as single files in
-    # the root functions directory
-    [[ -f $fn ]] && autoload -Uz $fn
-done
-
 ### Prompts
 if [[ -f $ZDOTDIR/.zsh_prompts ]]; then
     source $ZDOTDIR/.zsh_prompts
 fi
+
+### Custom completions
+fpath=($ZDOTDIR/completions $fpath)
+
+### Custom functions
+fpath=($ZDOTDIR/functions $fpath)
+autoload -Uz $ZDOTDIR/functions/**/*
 
 ### Aliases
 if [[ -f $ZDOTDIR/.zsh_aliases ]]; then
