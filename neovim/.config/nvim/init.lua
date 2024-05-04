@@ -1,17 +1,13 @@
-require("config.options")
-require("config.lazy")
+local bootstrapper = require("bootstrapper")
 
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-        require("config.keymaps")
-        require("config.autocmds")
+-- Initialize options and package manager
+bootstrapper.init()
 
-        -- Load custom highlights after the color scheme is set so they will not
-        -- get overwritten by the color scheme
-        require("config.highlights")
-    end,
-})
+-- Load configuration
+bootstrapper.setup()
+
+-- Temporarily until a message/notify plugin is installed
+vim.opt.cmdheight = 1;
 
 -- TODO:
 -- 1. Port "SynthWave '84" theme from VSCode to Neovim

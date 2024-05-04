@@ -20,7 +20,6 @@ local common_filetypes = {
 local highlight_group = augroup("HighLightGroup", { clear = true })
 local formatting_group = augroup("FormattingGroup", { clear = true })
 
--- Highlight yanked text
 autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = highlight_group,
@@ -31,8 +30,8 @@ autocmd("TextYankPost", {
     end,
 })
 
--- Remove whitespace when saving a file
 autocmd("BufWritePre", {
+    desc = "Remove whitespace when saving a file",
     group = formatting_group,
     pattern = common_filetypes,
     callback = function()
@@ -43,8 +42,8 @@ autocmd("BufWritePre", {
     end,
 })
 
--- Add an empty new line at the end of a file, if one doesn't already exist
 autocmd("BufWritePre", {
+    desc = "Add an empty new line at the end of a file, if one doesn't already exist",
     group = formatting_group,
     pattern = common_filetypes,
     callback = function()

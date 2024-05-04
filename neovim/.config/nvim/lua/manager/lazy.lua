@@ -14,7 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 
-vim.opt.rtp:prepend(lazypath)
+vim.opt.runtimepath:prepend(lazypath)
 
 -- Configure lazy.nvim
 require("lazy").setup("plugins", {
@@ -34,6 +34,10 @@ require("lazy").setup("plugins", {
         },
         wrap = true,
         border = "rounded",
+        backdrop = 100,
+        title = " Lazy Menu ",
+        title_pos = "center",
+        pills = true,
         icons = {
             cmd = " ",
             config = "",
@@ -47,6 +51,7 @@ require("lazy").setup("plugins", {
             not_loaded = "○",
             plugin = " ",
             runtime = " ",
+            require = " ",
             source = " ",
             start = "",
             task = "✔ ",
@@ -61,20 +66,10 @@ require("lazy").setup("plugins", {
     checker = {
         enabled = true,
     },
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                -- "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
-    },
     state = lazyroot .. "/lazy-state.json",
+    dev = {
+        path = "~/Software-Development/Neovim/plugins",
+        fallback = false,
+    },
 })
 
