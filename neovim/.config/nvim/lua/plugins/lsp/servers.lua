@@ -21,6 +21,8 @@ local M = {
         },
     },
 
+    pyright = {},
+
     tsserver = {},
 
     -- Linters
