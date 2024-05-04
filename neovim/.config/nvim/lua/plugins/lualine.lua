@@ -29,7 +29,7 @@ config.sections = {
     },
     -- TODO: check git diff icons
     lualine_b = {
-        "filename",
+       "filename",
         "branch",
         "diff",
     },
