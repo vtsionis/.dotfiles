@@ -10,6 +10,21 @@ local function map(mode, lhs, rhs, options)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+local function abbreviate(mode, lhs, rhs, options)
+    if vim.fn.has("nvim-0.10") == 1 then
+        map(mode, lhs, rhs, options)
+    else
+        mode = string.sub(mode, 1, 1)
+        local command = ""
+        if mode == "i" or mode == "c" then
+            command = mode
+        end
+        command = command .. "ab"
+
+        vim.cmd[command](lhs, rhs)
+    end
+end
+
 M.setup = function()
     -- Disable the space key, since it will be used as the leader
     map({ "n", "v" }, "<Space>", "<Nop>")
@@ -87,6 +102,13 @@ M.setup = function()
 
     -- Buffer interactions
     map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save File" })
+
+    -- Abbreviations
+    -- "ia": insert mode
+    -- "ca": cmdline mode
+    -- "!a": both
+    abbreviate("ia", "adn", "and")
+    abbreviate("ia", "teh", "the")
 end
 
 -- Specify keymaps for plugins
