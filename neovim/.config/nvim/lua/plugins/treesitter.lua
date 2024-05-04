@@ -25,10 +25,10 @@ return {
             "cmake",
             "css",
             "diff",
+            "go",
             "html",
             "javascript",
             "json",
-            "kotlin",
             "lua",
             "make",
             "markdown",
@@ -45,9 +45,7 @@ return {
             "vala",
             "vim",
             "vimdoc",
-            "vue",
             "yaml",
-            "zig",
         },
         sync_install = false,
         auto_install = true,
@@ -93,11 +91,6 @@ return {
         },
     },
     config = function(_, opts)
-        -- Treesitter based folding
-        vim.opt.foldmethod = "expr"
-        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-        vim.opt.foldenable = false
-
         require("nvim-treesitter.configs").setup(opts)
     end,
 }
