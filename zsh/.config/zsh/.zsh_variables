@@ -1,3 +1,6 @@
+PATH=$HOME/.local/bin:$PATH
+
+export VISUAL="nvim"
 export EDITOR="nvim"
 
 export LESSHISTORYFILE=$XDG_STATE_HOME/less/history
@@ -38,6 +41,13 @@ fi
 # Execute the Python commands in the file specified below before the first
 # prompt is displayed in interactive mode
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonstartup.py
+
+# Set up Rye as the Python version manager and prevent if from auto installing
+export RYE_HOME=$XDG_DATA_HOME/rye
+export RYE_NO_AUTO_INSTALL=1
+if [[ -f $RYE_HOME/env ]]; then
+    source $RYE_HOME/env
+fi
 
 # Use bat as the manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
