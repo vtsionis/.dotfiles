@@ -6,6 +6,7 @@ local M = {}
 local function map(mode, lhs, rhs, options)
     options = options or {}
     options.silent = options.silent ~= false
+    options.desc = options.desc or "which_key_ignore"
 
     vim.keymap.set(mode, lhs, rhs, options)
 end
@@ -26,9 +27,6 @@ local function abbreviate(mode, lhs, rhs, options)
 end
 
 M.setup = function()
-    -- Disable the space key, since it will be used as the leader
-    map({ "n", "v" }, "<Space>", "<Nop>")
-
     -- Disable arrow keys in normal mode
     map("n", "<Left>", "<Nop>")
     map("n", "<Right>", "<Nop>")
@@ -62,7 +60,10 @@ M.setup = function()
     map("n", "N", "Nzz")
 
     -- Cancel search highlighting with ESC
-    map("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>")
+    map("n", "<Esc>", function()
+        vim.cmd.nohlsearch()
+        vim.cmd.echo()
+    end)
 
     -- Move selected line / block of text
     map("n", "<M-j>", "<cmd>m .+1<CR>==")
@@ -87,8 +88,8 @@ M.setup = function()
     -- Diagnostic keymaps
     map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
     map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-    map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-    map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+    -- map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+    -- map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
     -- Move to a window using the <ctrl> hjkl keys
     map("n", "<C-h>", "<C-w>h")
@@ -100,8 +101,11 @@ M.setup = function()
     map("n", "[b", ":bprevious<CR>")
     map("n", "]b", ":bnext<CR>")
 
+    -- Toggle spell option
+    map("n", "<leader><F4>", ":set spell!<CR>", { desc = "Toggle Spell Check"})
+
     -- Buffer interactions
-    map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save File" })
+    map("n", "<leader>w", "<cmd>w<CR>")
 
     -- Abbreviations
     -- "ia": insert mode
@@ -111,8 +115,27 @@ M.setup = function()
     abbreviate("ia", "teh", "the")
 end
 
--- Specify keymaps for plugins
-M.lsp = {}
+-- Specify keymaps for plugins as a LazyKeysSpec table
+M.nvim_tree = {
+    { "<leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "[E]xplorer [T]oggle" },
+    { "<leader>ec", "<cmd>NvimTreeCollapse<CR>", desc = "[E]xplorer [C]ollapse" },
+    { "<leader>er", "<cmd>NvimTreeRefresh<CR>", desc = "[E]xplorer [R]efresh" },
+    { "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", desc = "[E]xplorer open at current [F]ile" },
+}
+
+M.telescope = {
+    { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope [F]ind [F]iles" },
+    { "<leader>fw", "<cmd>Telescope grep_string<CR>", desc = "Telescope [F]ind [W]ord" },
+    { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Telescope [F]ind with [G]rep" },
+    { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Telescope [F]ind [B]uffers" },
+}
+
+M.auto_session = {
+    { "<leader>ss", "<cmd>SessionSave<CR>", desc = "[S]ession [S]ave" },
+    { "<leader>sr", "<cmd>SessionRestore<CR>", desc = "[S]ession [R]estore" },
+    { "<leader>sf", "<cmd>Autosession search<CR>", desc = "[S]ession [F]ind" },
+    { "<leader>sp", "<cmd>SessionPurgeOrphaned<CR>", desc = "[S]ession [P]urge Orphaned" },
+}
 
 return M;
 
