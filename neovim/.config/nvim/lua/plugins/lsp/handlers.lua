@@ -1,3 +1,5 @@
+local icons = require("utils.icons").lsp
+
 local M = {}
 
 function M.setup()
@@ -17,11 +19,11 @@ function M.setup()
 
     -- Diagnostic signs
     local diagnostic_signs = {
-        { name = "DiagnosticSignError", text = "⊗" },
-        { name = "DiagnosticSignWarn", text = "⚠" },
-        { name = "DiagnosticSignInfo", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignOk", text = "󰗡" },
+        { name = "DiagnosticSignError", text = icons.error },
+        { name = "DiagnosticSignWarn", text = icons.warn },
+        { name = "DiagnosticSignInfo", text = icons.info },
+        { name = "DiagnosticSignHint", text = icons.hint },
+        { name = "DiagnosticSignOk", text = icons.ok },
     }
 
     for _, sign in ipairs(diagnostic_signs) do
