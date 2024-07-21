@@ -49,6 +49,11 @@ if [[ -f $RYE_HOME/env ]]; then
     source $RYE_HOME/env
 fi
 
+# Setup Rust and Cargo
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+PATH=$CARGO_HOME/bin:$PATH
+
 # Use bat as the manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Below is needed as a hacky workaround for fixing a known bug, see
