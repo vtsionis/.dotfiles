@@ -120,11 +120,11 @@ M.gitsigns = {
 }
 
 M.oil = {
-   { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
+   { "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
 }
 
 M.nvim_tree = {
-   { "<leader>e", ":NvimTreeToggle<CR>" },
+   { "<leader>e", "<cmd>NvimTreeToggle<CR>" },
 }
 
 M.nvim_ufo = {
