@@ -25,6 +25,7 @@ return {
    keys = keys or {},
    config = function()
       local telescope = require("telescope")
+      local action_layout = require("telescope.actions.layout")
       local themes = require("telescope.themes")
 
       local extensions = {
@@ -38,6 +39,46 @@ return {
       }
 
       telescope.setup({
+         defaults = {
+            sorting_strategy = "ascending",
+            layout_config = {
+               height = 0.9,
+               preview_cutoff = 120,
+               width = 0.9,
+
+               horizontal = {
+                  propmt_position = "bottom",
+               },
+            },
+            wrap_results = true,
+            prompt_prefix = " ",
+            dynamic_preview_title = true,
+            file_ignore_patterns = {
+               ".git",
+               "node_modules",
+            },
+
+            mappings = {
+               n = {
+                  ["<M-p>"] = action_layout.toggle_preview,
+               },
+               i = {
+                  ["<M-p>"] = action_layout.toggle_preview,
+               },
+            },
+         },
+
+         pickers = {
+            find_files = {
+               find_command = {
+                  "rg",
+                  "--hidden",
+                  "--files",
+                  "--sort", "path"
+               },
+            },
+         },
+
          extensions = extensions,
       })
 
