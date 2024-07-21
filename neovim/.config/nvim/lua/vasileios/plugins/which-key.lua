@@ -5,7 +5,11 @@ return {
       "nvim-tree/nvim-web-devicons",
    },
    opts = {
-      preset = "modern",
+      preset = "helix",
+      delay = 800,
+      filter = function(mapping)
+         return mapping.desc and mapping.desc ~= ""
+      end,
       triggers = {
          { "<auto>", mode = { "n", "i" } },
       },
