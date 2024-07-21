@@ -30,7 +30,7 @@ M.setup = function()
    map("i", ";", ";<C-g>u")
 
    -- Toggle list mode
-   map("n", "<leader>l", ":set list!<CR>")
+   map("n", "<leader>l", "<cmd>set list!<CR>")
 
    -- Don't move the cursor when joining lines
    map("n", "J", "mzJ`z")
@@ -72,11 +72,15 @@ M.setup = function()
    map("n", "<C-k>", "<C-w>k")
 
    -- Cycle through open buffers
-   map("n", "[b", ":bprevious<CR>")
-   map("n", "]b", ":bnext<CR>")
+   map("n", "[b", "<cmd>bprevious<CR>")
+   map("n", "]b", "<cmd>bnext<CR>")
+
+   -- Cycle through open tabs
+   map("n", "[t", "<cmd>tabprevious<CR>")
+   map("n", "]t", "<cmd>tabnext<CR>")
 
    -- Toggle spell option
-   map("n", "<leader><F4>", ":set spell!<CR>", { desc = "Toggle Spell Check"})
+   map("n", "<leader><F4>", "<cmd>set spell!<CR>", { desc = "Toggle Spell Check"})
 
    -- Buffer interactions
    map("n", "<leader>w", "<cmd>w<CR>")
