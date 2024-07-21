@@ -1,15 +1,11 @@
-local bootstrapper = require("bootstrapper")
+require("vasileios.config.options")
+require("vasileios.manager.lazy")
 
--- Initialize options and package manager
-bootstrapper.init()
+require("vasileios.config.autocommands")
+require("vasileios.config.keymaps").setup()
 
--- Load configuration
-bootstrapper.setup()
-
--- Temporarily until a message/notify plugin is installed
-vim.opt.cmdheight = 1;
+require("vasileios.config.highlights")
 
 -- TODO:
--- 1. Port "SynthWave '84" theme from VSCode to Neovim
--- 2. Clear messages appearing below the status line after a certain period
+-- 1. Fix spell check (due to treesitter)
 

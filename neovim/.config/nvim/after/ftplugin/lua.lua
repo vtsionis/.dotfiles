@@ -1,7 +1,8 @@
--- go fmt doesn't expand tabs
--- in fact, it transforms spaces into a tab
 local options = {
-   expandtab = false,
+   expandtab = true,
+   shiftwidth = 3,
+   softtabstop = 3,
+   tabstop = 3,
 }
 
 for option, value in pairs(options) do

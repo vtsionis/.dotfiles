@@ -1,0 +1,20 @@
+return {
+   BufferFileName = require("vasileios.plugins.heirline.components.buffer_file_name"),
+   CloseButton = require("vasileios.plugins.heirline.components.close_button"),
+   Diagnostics = require("vasileios.plugins.heirline.components.diagnostics"),
+   FileFlags = require("vasileios.plugins.heirline.components.file_flags"),
+   FileIcon = require("vasileios.plugins.heirline.components.file_icon"),
+   FileName = require("vasileios.plugins.heirline.components.file_name"),
+   FileType = require("vasileios.plugins.heirline.components.file_type"),
+   GitStatus = require("vasileios.plugins.heirline.components.gitstatus"),
+   LazyStatus = require("vasileios.plugins.heirline.components.lazystatus"),
+   LspStatus = require("vasileios.plugins.heirline.components.lspstatus"),
+   Mode = require("vasileios.plugins.heirline.components.mode"),
+   Ruler = require("vasileios.plugins.heirline.components.ruler"),
+   SearchCount = require("vasileios.plugins.heirline.components.searchcount"),
+   Space = require("vasileios.plugins.heirline.components.space"),
+   SpellIndicator = require("vasileios.plugins.heirline.components.spell_indicator"),
+   TabPage = require("vasileios.plugins.heirline.components.tabpage"),
+   WorkingDirectory = require("vasileios.plugins.heirline.components.working_directory"),
+}
+

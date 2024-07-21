@@ -1,0 +1,46 @@
+local colors = require("vasileios.globals.colors")
+
+local disabled_filetypes = require("vasileios.plugins.heirline.globals").disabled_filetypes
+
+return {
+   "rebelot/heirline.nvim",
+   dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "lewis6991/gitsigns.nvim",
+   },
+   event = "UiEnter",
+   config = function()
+      local StatusLine = require("vasileios.plugins.heirline.statusline")
+      local TabLine = require("vasileios.plugins.heirline.tabline")
+      local Winbar = require("vasileios.plugins.heirline.winbar")
+
+      require("heirline").setup({
+         statusline = {
+            condition = function()
+               for _, filetype in pairs(disabled_filetypes) do
+                  if vim.bo.filetype == filetype then
+                     return false
+                  end
+               end
+               return true
+            end,
+
+            hl = { bg = colors.black },
+
+            StatusLine,
+         },
+         winbar = Winbar,
+         tabline = TabLine,
+         opts = {
+            disable_winbar_cb = function()
+               for _, filetype in pairs(disabled_filetypes) do
+                  if vim.bo.filetype == filetype then
+                     return true
+                  end
+               end
+            end,
+         },
+      })
+   end,
+}
+
