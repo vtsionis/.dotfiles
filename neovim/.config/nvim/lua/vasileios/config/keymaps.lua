@@ -95,6 +95,12 @@ end
 
 -- Specify keymaps for plugins as a LazyKeysSpec table
 -- see: https://lazy.folke.io/spec/lazy_loading#%EF%B8%8F-lazy-key-mappings
+M.auto_session = {
+   { "<leader>ss", ":SessionSave ", desc = "[S]ession [S]ave (name)" },
+   { "<leader>sr", "<cmd>SessionRestore<CR>", desc = "[S]ession [R]estore" },
+   { "<leader>sf", "<cmd>Telescope session-lens<CR>", desc = "[S]ession [F]ind" },
+}
+
 M.gitsigns = {
    { "]g", function()
       require("gitsigns").nav_hunk("next")
