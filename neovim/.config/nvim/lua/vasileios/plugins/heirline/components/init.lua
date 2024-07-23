@@ -12,6 +12,7 @@ return {
    Mode = require("vasileios.plugins.heirline.components.mode"),
    Ruler = require("vasileios.plugins.heirline.components.ruler"),
    SearchCount = require("vasileios.plugins.heirline.components.searchcount"),
+   Sessions = require("vasileios.plugins.heirline.components.sessions"),
    Space = require("vasileios.plugins.heirline.components.space"),
    SpellIndicator = require("vasileios.plugins.heirline.components.spell_indicator"),
    TabPage = require("vasileios.plugins.heirline.components.tabpage"),

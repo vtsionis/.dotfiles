@@ -1,48 +1,48 @@
 local colors = require("vasileios.globals.colors")
 
 local modes = {
-   n = { name = "Normal", hl = { bg = colors.purple } },
-   no = { name = "Normal (no)", hl = { bg = colors.purple } },
-   nov = { name = "Normal (nov)", hl = { bg = colors.purple } },
-   noV = { name = "Normal (noV)", hl = { bg = colors.purple } },
-   ["no\22"] = { name = "Normal_", hl = { bg = colors.purple } },
-   niI = { name = "Normal i", hl = { bg = colors.purple } },
-   niR = { name = "Normal r", hl = { bg = colors.purple } },
-   niV = { name = "Normal v", hl = { bg = colors.purple } },
+   n = { name = "N", hl = { bg = colors.purple } },
+   no = { name = "N(o)", hl = { bg = colors.purple } },
+   nov = { name = "N(ov)", hl = { bg = colors.purple } },
+   noV = { name = "N(oV)", hl = { bg = colors.purple } },
+   ["no\22"] = { name = "N_", hl = { bg = colors.purple } },
+   niI = { name = "Ni", hl = { bg = colors.purple } },
+   niR = { name = "Nr", hl = { bg = colors.purple } },
+   niV = { name = "Nv", hl = { bg = colors.purple } },
 
-   nt = { name = "NTerminal", hl = { bg = colors.cyan } },
-   ntT = { name = "NTerminal (ntT)", hl = { bg = colors.cyan } },
+   nt = { name = "NT", hl = { bg = colors.cyan } },
+   ntT = { name = "NT(ntT)", hl = { bg = colors.cyan } },
 
-   v = { name = "Visual", hl = { bg = colors.yellow } },
-   vs = { name = "V-Select", hl = { bg = colors.yellow } },
-   V = { name = "V-Line", hl = { bg = colors.yellow } },
-   Vs = { name = "VL-Select", hl = { bg = colors.yellow } },
-   ["\22"] = { name = "V-Block", hl = { bg = colors.yellow } },
-   ["\22s"] = { name = "VB-Select", hl = { bg = colors.yellow } },
-   s = { name = "Select", hl = { bg = colors.yellow } },
-   S = { name = "S-Line", hl = { bg = colors.yellow } },
-   ["\19"] = { name = "S-Block", hl = { bg = colors.yellow } },
+   v = { name = "V", hl = { bg = colors.yellow } },
+   vs = { name = "V-S", hl = { bg = colors.yellow } },
+   V = { name = "V-L", hl = { bg = colors.yellow } },
+   Vs = { name = "VL-S", hl = { bg = colors.yellow } },
+   ["\22"] = { name = "V-B", hl = { bg = colors.yellow } },
+   ["\22s"] = { name = "VB-S", hl = { bg = colors.yellow } },
+   s = { name = "S", hl = { bg = colors.yellow } },
+   S = { name = "S-L", hl = { bg = colors.yellow } },
+   ["\19"] = { name = "S-B", hl = { bg = colors.yellow } },
 
-   i = { name = "Insert", hl = { bg = colors.green } },
-   ic = { name = "Insert", hl = { bg = colors.green } },
-   ix = { name = "Insert", hl = { bg = colors.green } },
+   i = { name = "I", hl = { bg = colors.green } },
+   ic = { name = "I", hl = { bg = colors.green } },
+   ix = { name = "I", hl = { bg = colors.green } },
 
-   R = { name = "Replace", hl = { bg = colors.red } },
-   Rc = { name = "Replace (Rc)", hl = { bg = colors.red } },
-   Rx = { name = "Replace (Rx)", hl = { bg = colors.red } },
-   Rv = { name = "V-Replace", hl = { bg = colors.red } },
-   Rvc = { name = "V-Replace (Rc)", hl = { bg = colors.red } },
-   fvx = { name = "V-Replace (Rx)", hl = { bg = colors.red } },
+   R = { name = "R", hl = { bg = colors.red } },
+   Rc = { name = "R(c)", hl = { bg = colors.red } },
+   Rx = { name = "R(x)", hl = { bg = colors.red } },
+   Rv = { name = "V-R", hl = { bg = colors.red } },
+   Rvc = { name = "V-R(c)", hl = { bg = colors.red } },
+   fvx = { name = "V-R(x)", hl = { bg = colors.red } },
 
-   c = { name = "Command", hl = { bg = colors.orange } },
-   cv = { name = "Command Ex", hl = { bg = colors.orange } },
+   c = { name = "C", hl = { bg = colors.orange } },
+   cv = { name = "C Ex", hl = { bg = colors.orange } },
 
    r = { name = "Prompt", hl = { bg = colors.bright_orange } },
    rm = { name = "More", hl = { bg = colors.bright_orange } },
    ["r?"] = { name = "Confirm", hl = { bg = colors.bright_orange } },
    ["!"] = { name = "Shell", hl = { bg = colors.bright_orange } },
 
-   t = { name = "Terminal", hl = { bg = colors.blue } },
+   t = { name = "T", hl = { bg = colors.blue } },
 }
 
 local default_settings = {
@@ -75,7 +75,7 @@ return {
    end,
 
    provider = function(self)
-      return "%-09( " .. self.mode.name .. "%)"
+      return "%-02( " .. self.mode.name .. "%) "
    end,
 }
 

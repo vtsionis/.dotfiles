@@ -15,6 +15,9 @@ return {
    { provider = "%<" }, -- cut here if not enough space
 
    { provider = "%=" }, -- right justify
+   C.Sessions,
+
+   { provider = "%=" }, -- right justify
 
     C.LspStatus,
     C.Space(2),
