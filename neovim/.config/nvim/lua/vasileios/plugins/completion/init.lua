@@ -89,7 +89,7 @@ return {
          },
       })
 
-      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/plugins/completion/snippets/*.lua", true)) do
+      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/vasileios/plugins/completion/snippets/*.lua", true)) do
          loadfile(ft_path)()
       end
    end,
