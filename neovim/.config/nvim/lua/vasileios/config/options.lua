@@ -80,7 +80,7 @@ local options = {
       lead = "␣",
       nbsp = "␣",
       space = "␣",
-      tab = "  󰌒",
+      tab = "󰌥󰌒",
       trail = "␣",
    },
    mouse = "a",
