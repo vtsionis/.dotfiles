@@ -1,6 +1,6 @@
 local colors = require("vasileios.globals.colors")
 
-local disabled_filetypes = require("vasileios.plugins.heirline.globals").disabled_filetypes
+local globals = require("vasileios.plugins.heirline.globals")
 
 return {
    "rebelot/heirline.nvim",
@@ -17,7 +17,7 @@ return {
       require("heirline").setup({
          statusline = {
             condition = function()
-               for _, filetype in pairs(disabled_filetypes) do
+               for _, filetype in pairs(globals.disabled_filetypes) do
                   if vim.bo.filetype == filetype then
                      return false
                   end
@@ -33,7 +33,7 @@ return {
          tabline = TabLine,
          opts = {
             disable_winbar_cb = function()
-               for _, filetype in pairs(disabled_filetypes) do
+               for _, filetype in pairs(globals.winbar_disabled_filetypes) do
                   if vim.bo.filetype == filetype then
                      return true
                   end
