@@ -157,6 +157,10 @@ M.treesitter_context = {
    end, desc = "Go to context" },
 }
 
+M.toggleterm = {
+   { "<leader>t", "<cmd>ToggleTerm<CR>", desc = "[T]oggle Terminal" },
+}
+
 M.telescope = {
    { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope [F]ind [F]iles" },
    { "<leader>fw", "<cmd>Telescope grep_string<CR>", desc = "Telescope [F]ind [W]ord" },
