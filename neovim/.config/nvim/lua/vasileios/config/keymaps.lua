@@ -158,7 +158,8 @@ M.treesitter_context = {
 }
 
 M.toggleterm = {
-   { "<leader>t", "<cmd>ToggleTerm<CR>", desc = "[T]oggle Terminal" },
+   { [[<C-\>]], "<cmd>ToggleTerm direction='float'<CR>", mode = { "n", "t" }, desc = "Toggle Terminal (float)" },
+   { [[<C-`>]], "<cmd>ToggleTerm direction='horizontal'<CR>", mode = { "n", "t" }, desc = "Toggle Terminal (horizontal)" },
 }
 
 M.telescope = {
