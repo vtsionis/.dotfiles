@@ -85,6 +85,12 @@ M.setup = function()
    -- Buffer interactions
    map("n", "<leader>w", "<cmd>w<CR>")
 
+   -- Move in and out of a terminal window
+   map("t", "<C-h>", "<cmd>wincmd h<CR>")
+   map("t", "<C-l>", "<cmd>wincmd l<CR>")
+   map("t", "<C-j>", "<cmd>wincmd j<CR>")
+   map("t", "<C-k>", "<cmd>wincmd k<CR>")
+
    -- Abbreviations
    -- "ia": insert mode
    -- "ca": cmdline mode
